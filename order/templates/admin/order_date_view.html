@@ -1,0 +1,68 @@
+{% extends 'admin/base_site.html' %}
+{% load i18n admin_urls static admin_list %}
+
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+&rsaquo; <a href="{% url 'admin:app_list' app_label='order' %}">Order</a>
+&rsaquo; Order
+</div>
+{% endblock %}
+
+
+{% block content %}
+<div id="content_main" class="p-5">
+    <a class="btn btn-primary mb-3" href="/admin/order/order/">Back</a>
+    <h3>Orders this week</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Ordered Product</th>
+                <th>Item Quantity</th>
+                <th>Status</th>
+                <th>Registered Date/Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in week_data %}
+            <tr>
+                <td>{{ data.user }}</td>
+                <td>{{ data.product }}</td>
+                <td>{{ data.quantity }}</td>
+                <td>{{ data.status }}</td>
+                <td>{{ data.registered_dttm }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Past orders</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Ordered Product</th>
+                <th>Item Quantity</th>
+                <th>Status</th>
+                <th>Registered Date/Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in other_data %}
+            <tr>
+                <td>{{ data.user }}</td>
+                <td>{{ data.product }}</td>
+                <td>{{ data.quantity }}</td>
+                <td>{{ data.status }}</td>
+                <td>{{ data.registered_dttm }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}
+
+

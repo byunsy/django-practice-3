@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block contents %}
+
+<div class="row mt-5 mb-3 justify-content-center">
+    <!-- HOME TITLE -->
+    <div class="col-12 text-center">
+        <h1>Home</h1>
+    </div>
+</div>
+
+{% if request.session.user %} <!-- IF LOGGED IN -->
+
+    <!-- HOME IMAGE -->
+    <div class="col-12 text-center mt-3">
+        {% load static %}
+        <img src="{% static 'images/ecommerce.jpg' %}" alt="Laptop Image" width="500">
+    </div>
+
+    <!-- USER INFO -->
+    <div class="row mt-3 ms-5 me-5 justify-content-center">
+        <div class="col-12 mb-5 text-center">
+            Signed in as: {{ username }}
+        </div>
+    </div>
+
+    <!-- SHOP BUTTON -->
+    <div class="row mt-3 ms-5 me-5 justify-content-center">
+        <div class="col-4">
+            <button class="btn btn-lg btn-success btn-block" onclick="location.href='/product'">
+                Shop
+            </button>
+        </div>
+    </div>
+
+    <!-- ORDER HISTORY BUTTON -->
+    <div class="row mt-3 ms-5 me-5 justify-content-center">
+        <div class="col-4">
+            <button class="btn btn-outline-success btn-block" onclick="location.href='/order'">
+                Order History
+            </button>
+        </div>
+    </div>
+
+    <!-- LOGOUT BUTTON -->
+    <div class="row mt-3 ms-5 me-5 justify-content-center">
+        <div class="col-4">
+            <button class="btn btn-outline-secondary btn-block" onclick="location.href='/logout'">
+                Sign Out
+            </button>
+        </div>
+    </div>
+
+
+{% else %}
+    <div class="row mt-3 ms-5 me-5 justify-content-center">
+
+        <!-- USER INFO -->
+        <div class="col-12 mb-5 text-center">
+            Please sign in.
+        </div>
+
+        <!-- LOGIN BUTTON -->
+        <div class="col-2">
+            <button class="btn btn-success btn-block" onclick="location.href='/login'">
+                Sign In
+            </button>
+        </div>
+
+        <!-- REGISTER BUTTON -->
+        <div class="col-2">
+            <button class="btn btn-success btn-block" onclick="location.href='/register'">
+                Register
+            </button>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}

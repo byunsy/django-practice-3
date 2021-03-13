@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block contents %}
+<div class="container">
+
+    <!-- Title row -->
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <h1>Register</h1>
+        </div>
+    </div>
+
+    <!-- Form row -->
+    <div class="row mt-5 ms-5 me-5 justify-content-center">
+        <div class="col-7">
+            <form method="POST" action="."> {% csrf_token %}
+
+                {% for field in form %}
+                <div class="form_group mb-3">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}"
+                           placeholder="{{ field.label }}" name="{{ field.name }}" />
+                </div>
+
+                {% if field.errors %}
+                <span style="color: red">{{ field.errors }}</span>
+                {% endif %}
+
+                {% endfor %}
+                
+                <button type="submit" class="btn btn-success mt-3 mr-3">
+                    Submit
+                </button>
+                <button type="button" class="btn btn-outline-success mt-3" onclick="location.href='/'">
+                    Back
+                </button>
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

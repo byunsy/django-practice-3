@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block contents %}
+
+<div class="row mt-5 justify-content-center">
+    <div class="col-10">
+        <table class="table table-hover">
+            <thead>
+                <tr class="table-success">
+                    <th scope="col">#</th>
+                    <th scope="col">Ordered Item</th>
+                    <th scope="col">Ordered Quantity</th>
+                    <th scope="col">Ordered Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in order_list %}
+                    <tr>
+                        <td scope="row">{{ order.id }}</td>
+                        <td>{{ order.product }}</td>
+                        <td>{{ order.quantity | intcomma }}</td>
+                        <td>{{ order.registered_dttm | date:'Y-m-d H:i'}}</td>
+                    </tr>
+                {% endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-10">
+        <button class="btn btn-outline-success mt-3" onclick="location.href='/'">
+            Back
+        </button>
+    </div>
+</div>
+
+{% endblock %}
