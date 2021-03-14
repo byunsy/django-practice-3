@@ -19,3 +19,10 @@ pip install djangorestframework
 ```bash
 pip install django-baton
 ```
+
+## Demonstrations
+Customized backoffice admin page with visualizations of recent orders
+![](README_images/img_admin_main.png)
+
+Viewing orders by different users on different days. The admin user can quickly view the order status and process refunds with customized buttons.
+![](README_images/img_orders.png)
