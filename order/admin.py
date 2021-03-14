@@ -104,7 +104,7 @@ class OrderAdmin(admin.ModelAdmin):
         return date_urls + urls
 
     def date_view(self, request):
-        week_date = datetime.datetime.now() - datetime.timedelta(days=7)
+        week_date = datetime.datetime.now() - datetime.timedelta(days=8)
         week_data = Order.objects.filter(registered_dttm__gte=week_date)
         other_data = Order.objects.filter(registered_dttm__lt=week_date)
         context = dict(

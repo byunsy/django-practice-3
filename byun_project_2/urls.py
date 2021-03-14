@@ -31,7 +31,7 @@ orig_index = admin.site.index
 def byun_proj_index(request, extra_context=None):
     base_date = datetime.datetime.now() - datetime.timedelta(days=7)
     order_data = {}
-    for i in range(7):
+    for i in range(8):
         target_dttm = base_date + datetime.timedelta(days=i)
         date_key = target_dttm.strftime('%Y-%m-%d')
         target_date = datetime.date(
